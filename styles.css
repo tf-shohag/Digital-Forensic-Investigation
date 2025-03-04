@@ -1,19 +1,25 @@
 /* Reset and base styles */
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+:root {
+    --primary: #5bbc2e;
+    --secondary: #182f59;
+}
+
 body {
     font-family: sans-serif;
     color: white;
+    overflow-x: hidden;
 }
 
 /* Container styles */
 .container {
     width: 100%;
-    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -23,7 +29,6 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 8px;
-    padding: 8px;
     background-color: white;
 }
 
@@ -32,6 +37,10 @@ body {
     width: 200px;
     height: 100px;
     display: none;
+}
+
+.description {
+    text-align: center;
 }
 
 .logo-mobile {
@@ -44,17 +53,21 @@ body {
 .testimonial-box {
     max-width: 500px;
     padding: 8px;
-    border: 4px solid #5bbc2e; /* Assuming primary color is indigo */
+    border: 2px solid var(--primary);
+    /* Assuming primary color is indigo */
     border-radius: 6px;
     position: relative;
     z-index: 40;
     display: none;
+    color: var(--secondary);
 }
 
 .testimonial-text {
     text-align: center;
     font-size: 12px;
+    color: var(--secondary);
 }
+
 
 /* Gradient borders */
 .top-gradient-border {
@@ -108,7 +121,8 @@ body {
 .user-name {
     font-size: 18px;
     font-weight: 600;
-    color: #1e40af; /* Assuming secondary color is blue */
+    color: #1e40af;
+    /* Assuming secondary color is blue */
 }
 
 /* Call button section */
@@ -119,7 +133,8 @@ body {
 }
 
 .call-label {
-    color: #1e40af; /* Assuming secondary color is blue */
+    color: #1e40af;
+    /* Assuming secondary color is blue */
     text-align: right;
     font-size: 12px;
 }
@@ -129,13 +144,23 @@ body {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 8px 16px;
-    background-color: #5bbc2e; /* Assuming primary color */
+    padding: 12px 16px;
+    border: 1px solid transparent;
+    background-color: #5bbc2e;
+    /* Assuming primary color */
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-weight: 500;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all .5s ease-in-out;
+}
+
+.call-button:hover {
+    background-color: white;
+    color: var(--primary);
+    border: 1px solid var(--primary);
 }
 
 .phone-icon {
@@ -148,11 +173,11 @@ body {
     .logo-desktop {
         display: block;
     }
-    
+
     .logo-mobile {
         display: none;
     }
-    
+
     .testimonial-box {
         display: block;
     }
@@ -225,13 +250,25 @@ h1 {
 }
 
 .text-primary {
-    color: var(--primary-color);
+    color: var(--primary);
 }
 
 .hero-description {
     color: var(--white);
-    font-size: 1.125rem;
+    font-size: 1rem;
+    text-align: center;
+    line-height: 1.4;
 }
+
+@media (min-width: 768px) {
+    .hero-description {
+        color: var(--white);
+        font-size: 1.125rem;
+        text-align: left;
+        line-height: 1.6;
+    }
+}
+
 
 /* Mobile form container */
 .mobile-form-container {
@@ -252,7 +289,7 @@ h1 {
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    color: var(--primary-color);
+    color: var(--primary);
     padding: 0 1rem;
     font-weight: 600;
     list-style-type: disc;
@@ -297,6 +334,7 @@ h1 {
     top: -30px;
     left: 20rem;
     font-size: 2.25rem;
+    display: none;
 }
 
 @media (min-width: 768px) {
@@ -307,7 +345,7 @@ h1 {
 
 .tag {
     color: var(--white);
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--primary);
     padding: 0.25rem 1rem;
     font-weight: 500;
     border-radius: 1rem;
@@ -316,7 +354,7 @@ h1 {
 /* CTA container */
 .cta-container {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
 
@@ -358,16 +396,17 @@ h1 {
 
 /* Reviews container */
 .reviews-container {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: auto;
     align-items: center;
     gap: 1rem;
     color: var(--white);
+    margin-top: 20px;
 }
 
 @media (min-width: 768px) {
     .reviews-container {
-        flex-direction: row;
+        grid-template-columns: auto auto;
     }
 }
 
@@ -376,6 +415,7 @@ h1 {
     align-items: center;
     gap: 1.5rem;
     background-color: rgba(116, 129, 141, 0.7);
+    height: 100%;
     padding: 1rem;
     border-radius: 0.375rem;
 }
@@ -429,6 +469,7 @@ h1 {
     display: flex;
     align-items: center;
     margin-top: 0.5rem;
+    justify-content: center;
 }
 
 /* Desktop form container */
@@ -452,6 +493,7 @@ h1 {
         transform: translateX(-200px);
         opacity: 0;
     }
+
     100% {
         transform: translateX(0);
         opacity: 1;
@@ -463,6 +505,7 @@ h1 {
         transform: translateX(200px);
         opacity: 0;
     }
+
     100% {
         transform: translateX(0);
         opacity: 1;
@@ -506,9 +549,7 @@ h1 {
     margin-bottom: 1rem;
 }
 
-.text-primary {
-    color: #5BBC2E;
-}
+
 
 .text-navy-900 {
     color: #0f172a;
@@ -528,6 +569,12 @@ h1 {
     margin-left: auto;
     margin-right: auto;
 }
+
+#forensic-types-grid .card-title {
+    color: var(--secondary);
+}
+
+
 
 /* Services Grid */
 .services-grid {
@@ -612,6 +659,23 @@ h1 {
     background: radial-gradient(75.54% 75.54% at 50% 50%, #254F9D 0%, #182F59 66.51%, #0A214B 100%);
 }
 
+.forensic-services .title {
+    color: white;
+    margin-bottom: 100px;
+}
+
+.forensic-services .cta-button {
+    background-color: var(--primary);
+    color: white;
+}
+
+.forensic-services .cta-button:hover {
+    background-color: transparent;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+}
+
+
 /* Title */
 .title {
     color: white;
@@ -642,7 +706,8 @@ h1 {
     position: absolute;
     background-color: rgba(255, 255, 255, 0.2);
     padding: 1rem;
-    border-left: 4px solid #254F9D; /* Assuming primary color is this blue */
+    border-left: 4px solid var(--primary);
+    /* Assuming primary color is this blue */
     color: white;
     width: 300px;
 }
@@ -683,7 +748,8 @@ h1 {
 .mobile-service-text {
     background-color: rgba(255, 255, 255, 0.2);
     padding: 1rem;
-    border-left: 4px solid #254F9D; /* Assuming primary color is this blue */
+    border-left: 4px solid #254F9D;
+    /* Assuming primary color is this blue */
     color: white;
     width: 300px;
 }
@@ -704,7 +770,7 @@ h1 {
     padding: 0.75rem 1.5rem;
     padding-left: 2rem;
     border-radius: 9999px;
-    background-color: #254F9D; /* Assuming primary color */
+    background-color: var(--primary);
     color: white;
     font-size: 0.875rem;
     border: none;
@@ -719,7 +785,8 @@ h1 {
     bottom: 0;
     color: black;
     padding: 0.5rem;
-    border: 1px solid #FFD700; /* Assuming secondary color is gold */
+    border: 1px solid white;
+    /* Assuming secondary color is gold */
     background-color: white;
     border-radius: 9999px;
     width: 3.5rem;
@@ -764,7 +831,8 @@ h1 {
 }
 
 .container {
-    max-width: 1280px; /* max-w-7xl */
+    max-width: 1280px;
+    /* max-w-7xl */
     margin: 0 auto;
     position: relative;
 }
@@ -777,17 +845,11 @@ h1 {
     margin-bottom: 1rem;
 }
 
-.text-secondary {
-    color: #FFD700; /* Assuming gold as secondary color */
-}
 
-.text-primary {
-    color: #182f59; /* Using the blue from the button */
-}
 
 /* Button styles */
 .cta-button {
-    background-color: #182f59;
+    background-color: var(--primary);
     color: white;
     border: 1px solid transparent;
     padding: 0.75rem 2rem;
@@ -801,9 +863,9 @@ h1 {
 }
 
 .cta-button:hover {
-    border-color: #FFD700;
+    border-color: white;
     background-color: transparent;
-    color: #FFD700;
+    color: white;
 }
 
 /* Grid layout */
@@ -845,7 +907,7 @@ h1 {
         top: 0;
         height: 100%;
         width: 1px;
-        background-color: #FFD700;
+        background-color: var(--secondary);
     }
 }
 
@@ -867,6 +929,7 @@ h1 {
     margin-bottom: 1.5rem;
     display: flex;
     justify-content: center;
+    align-items: center;
     position: relative;
 }
 
@@ -893,7 +956,7 @@ h1 {
 
 /* Text styles */
 .card-title {
-    color: #FFD700;
+    color: white;
     font-weight: 700;
     font-size: 1.125rem;
     margin-bottom: 0.75rem;
@@ -955,6 +1018,7 @@ h1 {
 .testimonial-section {
     padding: 100px 0;
     background-color: var(--gray-light);
+    background-image: url(/dfi/success.webp);
 }
 
 .testimonial-header {
@@ -963,7 +1027,7 @@ h1 {
 }
 
 .section-subtitle {
-    color: var(--primary-color);
+    color: var(--primary);
     font-size: 16px;
     font-weight: 600;
     text-transform: uppercase;
@@ -992,6 +1056,17 @@ h1 {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     opacity: 0;
     transform: translateY(20px);
+}
+
+.testimonial-card:nth-child(2) {
+    margin-top: 48px;
+}
+
+@media (max-width: 768px) {
+    .testimonial-card:nth-child(2) {
+        margin-top: 0px;
+    }
+
 }
 
 .testimonial-card.visible {
@@ -1046,11 +1121,11 @@ h1 {
     .testimonial-section {
         padding: 70px 0;
     }
-    
+
     .testimonial-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .section-title {
         font-size: 28px;
     }
@@ -1087,11 +1162,13 @@ h1 {
 }
 
 .forensic-process__title-main {
-    color: #333333; /* Dark color for secondary */
+    color: var(--secondary);
+    /* Dark color for secondary */
 }
 
 .forensic-process__title-highlight {
-    color: #4CAF50; /* Green color for primary */
+    color: #4CAF50;
+    /* Green color for primary */
 }
 
 .forensic-process__subtitle {
@@ -1156,13 +1233,13 @@ h1 {
 }
 
 .step__header {
-    background-color: #e1e1e1;
+    background-color: #d1d5db;
     padding: 0.5rem 1rem;
 }
 
 .step__title {
-    font-weight: 700;
-    color: #333333;
+    font-weight: 600;
+    color: var(--secondary);
 }
 
 .step__description-container {
@@ -1181,16 +1258,21 @@ h1 {
     display: none;
 }
 
+.forensic-process__header {
+    text-align: center;
+    opacity: 1;
+}
+
 .forensic-process__image--shield {
     left: 4rem;
-    top: 50%;
+    top: 7%;
     width: 12rem;
     transform: translateX(-25%);
 }
 
 .forensic-process__image--desktop {
     right: -13rem;
-    top: 16rem;
+    top: 10rem;
     width: 12rem;
     transform: translateX(25%);
 }
@@ -1219,7 +1301,7 @@ h1 {
     border: 1px solid transparent;
     font-weight: 600;
     font-size: 0.875rem;
-    background-color: #333333;
+    background-color: var(--primary);
     color: white;
     padding: 1rem 2rem;
     border-radius: 0.25rem;
@@ -1234,7 +1316,7 @@ h1 {
 
 .forensic-process__button:hover {
     background-color: transparent;
-    color: #333333;
+    color: var(--secondary);
     border-color: #333333;
 }
 
@@ -1366,13 +1448,8 @@ h1 {
     line-height: 1.2;
 }
 
-.text-secondary {
-    color: #6b7280; /* Customize your secondary color */
-}
 
-.text-primary {
-    color: #3b82f6; /* Customize your primary color */
-}
+
 
 @media (min-width: 768px) {
     .title {
@@ -1517,9 +1594,9 @@ h1 {
 }
 
 .icon-container {
-    width: 4rem;
     margin-top: 4rem;
-    color: #3b82f6; /* Customize icon color */
+    color: #3b82f6;
+    /* Customize icon color */
 }
 
 /* Animation classes */
@@ -1555,22 +1632,27 @@ h1 {
 }
 
 .consequences-section .title {
-    color: #333; /* secondary color */
-    font-size: 1.875rem; /* text-3xl */
+    color: #333;
+    /* secondary color */
+    font-size: 1.875rem;
+    /* text-3xl */
     font-weight: 600;
     text-align: center;
-    max-width: 48rem; /* max-w-4xl */
+    max-width: 48rem;
+    /* max-w-4xl */
     text-transform: uppercase;
 }
 
 @media (min-width: 1024px) {
     .consequences-section .title {
-        font-size: 2.25rem; /* text-4xl */
+        font-size: 2.25rem;
+        /* text-4xl */
     }
 }
 
 .consequences-section .text-primary {
-    color: #3b82f6; /* primary color - adjust to match your brand */
+    color: var(--primary);
+    /* primary color - adjust to match your brand */
 }
 
 .consequences-section .content-wrapper {
@@ -1592,7 +1674,8 @@ h1 {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    border-left: 1px solid #3b82f6; /* primary color for border */
+    border-left: 1px solid #3b82f6;
+    /* primary color for border */
     min-width: 100%;
 }
 
@@ -1605,11 +1688,13 @@ h1 {
 .consequences-section .tab {
     cursor: pointer;
     transition: all 0.3s;
+    color: black;
     padding: 0.5rem;
 }
 
 .consequences-section .tab.active {
-    background-color: #3b82f6; /* primary color */
+    background-color: var(--primary);
+    /* primary color */
     font-size: 1.5rem;
     font-weight: 700;
     padding: 1rem;
@@ -1619,14 +1704,16 @@ h1 {
 .consequences-section .tab.next {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #4b5563; /* gray-600 */
+    color: var(--secondary);
+    /* gray-600 */
     padding: 0.75rem;
 }
 
 /* Image container styling */
 .consequences-section .image-container {
     position: relative;
-    border-radius: 0.375rem; /* rounded-md */
+    border-radius: 0.375rem;
+    /* rounded-md */
     overflow: hidden;
     width: 100%;
     max-width: 700px;
@@ -1671,11 +1758,18 @@ h1 {
 }
 
 /* Title */
+.case-study-container .title {
+    text-align: center;
+    width: 100%;
+    color: var(--secondary);
+}
+
 .title {
     font-size: 1.875rem;
     font-weight: 700;
     text-align: center;
-    color: #5BBC2E; /* Assuming secondary color is green based on SVG fills */
+    color: #5BBC2E;
+    /* Assuming secondary color is green based on SVG fills */
     margin-bottom: 3rem;
 }
 
@@ -1708,11 +1802,12 @@ h1 {
 }
 
 .card-header {
-    background-color: #5BBC2E;
+    background-color: var(--secondary);
     color: #ffffff;
     padding: 1rem;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .number-badge {
@@ -1731,6 +1826,7 @@ h1 {
 .card-title {
     font-weight: 700;
     font-size: 1.125rem;
+    padding-top: 12px;
 }
 
 .card-content {
@@ -1753,8 +1849,9 @@ h1 {
 
 .info-label {
     display: flex;
-    align-items: center;
+    align-items: start;
     margin-bottom: 0.25rem;
+
 }
 
 .icon-wrapper {
@@ -1768,12 +1865,13 @@ h1 {
 
 .label-text {
     font-weight: 600;
-    color: #5BBC2E;
+    color: var(--secondary);
 }
 
 .info-text {
-    color: #1f2937;
+    color: black;
     padding-left: 1.75rem;
+    text-align: start;
 }
 
 /* CTA Button */
@@ -1820,6 +1918,9 @@ h1 {
 
 .animate-fade-up {
     animation: fadeUp 0.6s ease forwards;
+    width: 100%;
+    display: flex;
+    align-items: center;
     animation-delay: 0.8s;
     opacity: 0;
 }
@@ -1829,6 +1930,7 @@ h1 {
         opacity: 0;
         transform: translateY(-20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1840,6 +1942,7 @@ h1 {
         opacity: 0;
         transform: translateX(-200px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -1851,6 +1954,7 @@ h1 {
         opacity: 0;
         transform: translateX(200px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -1862,6 +1966,7 @@ h1 {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1892,11 +1997,13 @@ h1 {
 }
 
 .wrm-text-primary {
-    color: #4CAF50; /* Adjust to match your site's primary color */
+    color: #4CAF50;
+    /* Adjust to match your site's primary color */
 }
 
 .wrm-text-secondary {
-    color: #333333; /* Adjust to match your site's secondary color */
+    color: #333333;
+    /* Adjust to match your site's secondary color */
 }
 
 /* Layout */
@@ -1945,7 +2052,8 @@ h1 {
 .wrm-feature-side-text {
     transform: rotate(-90deg);
     white-space: nowrap;
-    color: #4CAF50; /* Adjust to match your site's primary color */
+    color: #4CAF50;
+    /* Adjust to match your site's primary color */
     font-size: 0.75rem;
     font-weight: bold;
     border-bottom: 2px solid;
@@ -1961,10 +2069,17 @@ h1 {
     gap: 0.5rem;
 }
 
+@media (max-width: 768px) {
+    .wrm-feature-content {
+        flex-direction: column;
+    }
+}
+
 .wrm-feature-text h3 {
     font-size: 1.125rem;
     font-weight: 600;
-    color: #333333; /* Adjust to match your site's secondary color */
+    color: #333333;
+    /* Adjust to match your site's secondary color */
     margin-bottom: 0.25rem;
 }
 
@@ -2007,6 +2122,7 @@ h1 {
 @media (min-width: 768px) {
     .wrm-team-images {
         gap: 3rem;
+        padding: 1rem;
     }
 }
 
@@ -2032,6 +2148,13 @@ h1 {
     justify-content: center;
     gap: 1.5rem;
     margin-top: 3rem;
+}
+
+@media (min-width: 768px) {
+    .wrm-media-logos img {
+        width: 200px;
+        height: auto;
+    }
 }
 
 /* Animations */
@@ -2114,12 +2237,19 @@ h1 {
     }
 }
 
+
+.text-secondary {
+    color: var(--secondary);
+}
+
 .sa-text-primary {
-    color: #5BBC2E; /* Adjust this color as needed */
+    color: #5BBC2E;
+    /* Adjust this color as needed */
 }
 
 .sa-text-secondary {
-    color: #333; /* Adjust this color as needed */
+    color: #333;
+    /* Adjust this color as needed */
 }
 
 .sa-grid {
@@ -2184,19 +2314,23 @@ h1 {
     border-radius: 9999px;
 }
 
-.sa-icon-top-left, .sa-icon-bottom-left {
+.sa-icon-top-left,
+.sa-icon-bottom-left {
     right: -2rem;
 }
 
-.sa-icon-top-right, .sa-icon-bottom-right {
+.sa-icon-top-right,
+.sa-icon-bottom-right {
     left: -2rem;
 }
 
-.sa-icon-top-left, .sa-icon-top-right {
+.sa-icon-top-left,
+.sa-icon-top-right {
     bottom: -2rem;
 }
 
-.sa-icon-bottom-left, .sa-icon-bottom-right {
+.sa-icon-bottom-left,
+.sa-icon-bottom-right {
     top: -2rem;
 }
 
@@ -2248,11 +2382,13 @@ h1 {
 }
 
 .faq-text-secondary {
-    color: #333; /* Adjust this color as needed */
+    color: #333;
+    /* Adjust this color as needed */
 }
 
 .faq-text-primary {
-    color: #5BBC2E; /* Adjust this color as needed */
+    color: #5BBC2E;
+    /* Adjust this color as needed */
 }
 
 .faq-description {
@@ -2278,13 +2414,15 @@ h1 {
 }
 
 .faq-question.open {
-    border-bottom: 2px solid #333; /* Adjust this color as needed */
+    border-bottom: 2px solid #333;
+    /* Adjust this color as needed */
 }
 
 .faq-question h3 {
     font-size: 1.125rem;
     font-weight: 600;
-    color: #333; /* Adjust this color as needed */
+    color: #333;
+    /* Adjust this color as needed */
 }
 
 .faq-toggle-btn {
@@ -2304,7 +2442,8 @@ h1 {
 
 .tf-footer {
     width: 100%;
-    border-top: 2px solid #333; /* Adjust color as needed */
+    border-top: 2px solid #333;
+    /* Adjust color as needed */
 }
 
 .tf-container {
@@ -2372,7 +2511,8 @@ h1 {
     height: auto;
 }
 
-.tf-business-details, .tf-location {
+.tf-business-details,
+.tf-location {
     text-align: center;
 }
 
@@ -2380,7 +2520,8 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #5BBC2E; /* Adjust color as needed */
+    color: #5BBC2E;
+    /* Adjust color as needed */
     margin-bottom: 0.5rem;
 }
 
@@ -2395,21 +2536,35 @@ h1 {
     font-weight: 500;
 }
 
-.tf-business-details p, .tf-location p {
-    color: #333; /* Adjust color as needed */
+.tf-business-details p,
+.tf-location p {
+    color: #333;
+    /* Adjust color as needed */
     margin-bottom: 0.25rem;
 }
 
 .tf-legal-disclaimer {
-    background-color: #333; /* Adjust color as needed */
+    background-color: #333;
+    /* Adjust color as needed */
     color: white;
     padding: 0.75rem 0;
 }
 
 .tf-disclaimer-content {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
+    flex-direction: column;
+    gap: 4px;
+}
+
+
+@media (min-width:768px) {
+    
+    .tf-disclaimer-content {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
 }
 
 .tf-disclaimer-title {
@@ -2440,31 +2595,31 @@ h1 {
     display: flex;
     flex-direction: column;
     z-index: 99999;
-  }
-  
-  .cookiealert a {
+}
+
+.cookiealert a {
     color: #66b2ff;
     text-decoration: underline;
-  }
-  
-  .cookiealert button {
+}
+
+.cookiealert button {
     border: none;
     color: white;
     padding: 8px 16px;
     cursor: pointer;
     border-radius: 3px;
     margin: 0 5px;
-  }
-  
-  .cookiealert button.btn-success {
+}
+
+.cookiealert button.btn-success {
     background-color: #28a745;
-  }
-  
-  .cookiealert button.btn-danger {
+}
+
+.cookiealert button.btn-danger {
     background-color: #dc3545;
-  }
-  
-  /* Custom styles for Bitrix24 form button */
-  .b24-form-btn--blackmailusV4 {
+}
+
+/* Custom styles for Bitrix24 form button */
+.b24-form-btn--blackmailusV4 {
     /* Add any specific styles you need for this class */
-  }
+}

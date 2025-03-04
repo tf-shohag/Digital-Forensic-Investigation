@@ -367,19 +367,7 @@ function populateGrid() {
 document.addEventListener('DOMContentLoaded', function() {
     populateGrid();
     
-    // Handle button hover animations
-    const button = document.querySelector('.cta-button');
-    button.addEventListener('mouseenter', () => {
-        button.style.backgroundColor = 'transparent';
-        button.style.color = '#FFD700';
-        button.style.borderColor = '#FFD700';
-    });
-    
-    button.addEventListener('mouseleave', () => {
-        button.style.backgroundColor = '#182f59';
-        button.style.color = 'white';
-        button.style.borderColor = 'transparent';
-    });
+
 });
 
 
@@ -560,7 +548,7 @@ const testimonials = [
     function animateHeader() {
         const header = document.querySelector('.forensic-process__header');
         setTimeout(() => {
-            header.classList.add('forensic-process__header--animated');
+            header.classList.add('forensic-process__header');
         }, 100);
     }
 
@@ -601,7 +589,7 @@ const testimonials = [
     }
 
     // Apply initial styles
-    document.querySelector('.forensic-process__header').style.opacity = '0';
+    document.querySelector('.forensic-process__header').style.opacity = '1';
     document.querySelector('.forensic-process__header').style.transform = 'translateY(30px)';
     document.querySelector('.forensic-process__header').style.transition = 'opacity 0.6s ease, transform 0.6s ease';
 
