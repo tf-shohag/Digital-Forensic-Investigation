@@ -1162,14 +1162,14 @@
                 </iframe>
             `;
             document.body.appendChild(gtmNoscript);
-    
+
             // Script sources
             const scriptSources = [
-                'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js',
+                // 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js',
                 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js',
-                'minify.js'
+
             ];
-    
+
             // Load scripts with performance optimization
             scriptSources.forEach(src => {
                 const script = document.createElement('script');
@@ -1179,7 +1179,7 @@
                 document.body.appendChild(script);
             });
         }
-    
+
         // Different load event strategies
         if (document.readyState === 'complete') {
             loadScriptsAfterPageLoad();
@@ -1187,6 +1187,8 @@
             window.addEventListener('load', loadScriptsAfterPageLoad);
         }
     </script>
+
+    <script src="minify.js" defer></script>
 
 </body>
 
