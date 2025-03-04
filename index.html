@@ -1149,17 +1149,44 @@
         </div>
     </div>
 
-    <!-- Google Tag Manager (noscript) -->
-    <noscript >
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5ZK559W" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe>
-    </noscript>
-
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js" defer></script>
-
-    <script src="minify.js" defer></script>
+    <script>
+        // Performant script loader
+        function loadScriptsAfterPageLoad() {
+            // Create and inject GTM noscript
+            const gtmNoscript = document.createElement('noscript');
+            gtmNoscript.innerHTML = `
+                <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5ZK559W" 
+                        height="0" 
+                        width="0" 
+                        style="display:none;visibility:hidden">
+                </iframe>
+            `;
+            document.body.appendChild(gtmNoscript);
+    
+            // Script sources
+            const scriptSources = [
+                'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js',
+                'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js',
+                'minify.js'
+            ];
+    
+            // Load scripts with performance optimization
+            scriptSources.forEach(src => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.async = false; // Maintain execution order
+                script.defer = true;
+                document.body.appendChild(script);
+            });
+        }
+    
+        // Different load event strategies
+        if (document.readyState === 'complete') {
+            loadScriptsAfterPageLoad();
+        } else {
+            window.addEventListener('load', loadScriptsAfterPageLoad);
+        }
+    </script>
 
 </body>
 
